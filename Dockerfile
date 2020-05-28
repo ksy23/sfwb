@@ -1,6 +1,6 @@
 FROM alpine:3.8
 LABEL maintainer = 'ksy23'
-ENV WORKBENCH_VERSION=47.0.0
+ENV WORKBENCH_VERSION=48.0.0
 
 RUN apk update \
   && apk add apache2 php7-apache2 php7-curl php7-json php7-openssl php7-soap php7-redis php7-sodium php7-simplexml \
