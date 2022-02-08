@@ -1,9 +1,9 @@
-FROM alpine:3.8
+FROM php:7.4.0-fpm-alpine
 LABEL maintainer = 'ksy23'
 ENV WORKBENCH_VERSION=53.0.0
 
 RUN apk update \
-  && apk add apache2 php7-apache2 php7-curl php7-json php7-openssl php7-soap php7-redis php7-sodium php7-simplexml \
+  && apk add apache2 php7 php7-apache2 php7-curl php7-json php7-openssl php7-soap php7-redis php7-sodium php7-simplexml \
      composer git curl
 
 RUN mkdir -p /var/run/apache2
@@ -16,8 +16,8 @@ RUN cd \
     && curl -k -L "https://github.com/ryanbrainard/forceworkbench/archive/${WORKBENCH_VERSION}.tar.gz" -o workbench.tar.gz \
     && tar zxvf workbench.tar.gz \
     && cd force* \
-#    && composer update --ignore-platform-reqs \
-    && composer update \
+    && composer update --ignore-platform-reqs \
+#    && composer update \
     && cp -r workbench / \
     && cp -r vendor / \
     && cd \
